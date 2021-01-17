@@ -1,21 +1,48 @@
-package Day2;
+//package Day2;
 
 import java.util.*;
 
 
 public class Test3 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String z = scanner.nextLine();
-        String w = scanner.nextLine();
 
+    public static void main(String[] args) {
+        Scanner a = new Scanner(System.in);
+        String zwork = a.nextLine();
+        String wwork = a.nextLine();
         Map<String,Integer> mapz = new HashMap<>();
-        getMap(z, mapz);//得到map bj 6,hz 2,qd 4,nj 5,wh 3
+        getMap(zwork, mapz);//得到map bj 6,hz 2,qd 4,nj 5,wh 3
+       /* StringBuilder s = new StringBuilder();
+        int i = 2;
+        while (i < zwork.length()){
+            if(zwork.charAt(i) == ','){
+                i++;
+            }else{
+                if(zwork.charAt(i) != ' ' ){
+                    s.append(zwork.charAt(i));
+                }else{
+                    if (mapz.containsKey(s.toString())){
+                        mapz.put(s.toString(),mapz.get(s.toString())+Integer.valueOf(zwork.charAt(i+1)) -51+3);
+                    }else {
+                        mapz.put(s.toString(), Integer.valueOf(zwork.charAt(i+1)) -51+3);
+                        s = new StringBuilder();
+                        i++;
+                    }
+                }
+                i++;
+            }
+        }*/
+
 
         Map<String,Integer> mapw = new HashMap<>();
-        getMap(w, mapw);//得到map hn 7,xm 6,bj 4,gz 6,wh 4
-
-
+       // getMap(wwork, mapw);//得到map hn 7,xm 6,bj 4,gz 6,wh 4
+         /*int[] arr = new int[integerSet.size()];
+        int i = 0;
+        for (Integer integer : integerSet) {
+            System.out.println(integer);
+            arr[arr.length-1-i] = integer;
+            i++;
+        }
+        return arr;*/
         StringBuilder end = new StringBuilder("  ");
         for (String s : mapw.keySet()) {//z:bj 6,w:wh 4
             if(mapz.containsKey(s)){
@@ -64,20 +91,20 @@ public class Test3 {
         return newlist;
     }
 
-    private static void getMap(String z, Map<String, Integer> mapz) {
+    private static void getMap(String zwork, Map<String, Integer> mapz) {
         StringBuilder s = new StringBuilder();
         int i = 2;
-        while (i < z.length()){
-            if(z.charAt(i) == ','){
+        while (i < zwork.length()){
+            if(zwork.charAt(i) == ','){
                 i++;
             }else{
-                if(z.charAt(i) != ' ' ){
-                    s.append(z.charAt(i));
+                if(zwork.charAt(i) != ' ' ){
+                    s.append(zwork.charAt(i));
                 }else{
                     if (mapz.containsKey(s.toString())){
-                        mapz.put(s.toString(),mapz.get(s.toString())+Integer.valueOf(z.charAt(i+1)) -51+3);
+                        mapz.put(s.toString(),mapz.get(s.toString())+Integer.valueOf(zwork.charAt(i+1)) -51+3);
                     }else {
-                        mapz.put(s.toString(), Integer.valueOf(z.charAt(i+1)) -51+3);
+                        mapz.put(s.toString(), Integer.valueOf(zwork.charAt(i+1)) -51+3);
                         s = new StringBuilder();
                         i++;
                     }
@@ -85,5 +112,49 @@ public class Test3 {
                 i++;
             }
         }
+    }
+}
+class CQqueue {
+    /**
+     * Your CQueue object will be instantiated and called as such:
+     * CQueue obj = new CQueue();
+     * obj.appendTail(value);
+     * int param_2 = obj.deleteHead();
+     */
+    Stack<Integer> stack1;
+    Stack<Integer> stack2;
+    int value;
+    public CQqueue() {
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
+    }
+    /*public void appendTail(int value) {
+        if(!stack2.isEmpty()){
+            stack1.push(stack2.pop());
+        }
+        stack1.push(value);
+    }
+
+    public int deleteHead() {
+        if(!stack1.isEmpty()){
+            stack2.push(stack1.pop());
+        }
+        return stack2.pop();
+    }*/
+    public void appendTail(int value) {//优化版
+
+        stack1.push(value);
+    }
+
+    public int deleteHead() {
+        if(stack2.isEmpty()) {
+            while (!stack1.isEmpty()){
+                stack2.push(stack1.pop());
+            }
+        }
+        if(stack2.isEmpty()){
+            return -1;
+        }
+        return stack2.pop();
     }
 }

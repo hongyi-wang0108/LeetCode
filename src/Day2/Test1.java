@@ -22,6 +22,21 @@ public class Test1 {
         }
 
     }
+    public static int[]  reversePrint2(ListNode head){
+        Stack<Integer> stack = new Stack<>();
+        ListNode temp = head;
+        while (temp != null){
+            stack.push(temp.val);
+            temp = temp.next;
+        }
+        int[] arr = new int[stack.size()];
+        int i = 0;
+        while (stack.isEmpty()){
+            arr[i] = stack.pop();
+            i++;
+        }
+       return arr;
+    }
     public static int[] reversePrint(ListNode head) {
         //int i =  0;
         List<Integer> integerSet = new ArrayList<>();
