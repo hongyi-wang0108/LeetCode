@@ -18,12 +18,34 @@ public class Test1 {
         b1.next = b2;
         b2.next = b3;
         b3.next = null;
-        ListNode head = mergeTwoLists2(a1,b1);
+        /*ListNode head = mergeTwoLists2(a1,b1);
         while (head != null){
             System.out.print( " " + head.val);
             head = head.next;
-        }
+        }*/
+        ListNode copyhead = copyqian(a1);
+        //System.out.println("44455");
+        /*while (copyhead != null){
+            System.out.print(copyhead.val + " ");
+            copyhead = copyhead.next;
+        }*/
     }
+
+    private static ListNode copyqian(ListNode a1) {//1 2 4
+        ListNode cur = a1;//cur zhizhen
+        ListNode dum = new ListNode(0);//jeidian
+        ListNode pre = dum;//pre zhizhen
+
+        while (cur != null){
+            ListNode temp = new ListNode(cur.val);
+            pre.next = temp;
+            cur = cur.next;
+            pre = temp;
+        }
+        return null;
+       // return pre.next;
+    }
+
     public static ListNode mergeTwoLists(ListNode a1, ListNode b1) {
         ListNode tempa = a1;
         ListNode tempb = b1;
