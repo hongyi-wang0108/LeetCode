@@ -2,6 +2,7 @@ package Day15;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -69,7 +70,7 @@ public class Test2 {
        premy.right = headmy;
        return headmy;
     }
-
+    int i=Integer.valueOf("1");
     private void dfss(Node1 cur) {
         if(cur == null) return;
         dfss(cur.left);
@@ -99,8 +100,5 @@ class Node1  {
         right = _right;
     }
 
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return null;
-    }
-};
+
+}
